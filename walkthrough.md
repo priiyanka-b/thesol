@@ -1,0 +1,4 @@
+
+## Debugged Hover Bridge & Pointer-Events Fix
+* **Diagnosis**: Identified two structural issues: first, the translateY(8px) panel animation offset created a physical 8px gap during hover transitions. Second, pointer-events: auto was only bound to .nav-category-wrapper:hover, which was lost when crossing the gap.
+* **Resolution**: Added a transparent ::before pseudo-element on .premium-mega-menu spanning top: -16px to bridge the sub-pixel dead zone. Bound pointer-events: auto directly to the active React state (.premium-mega-menu.open) so dropdown clicks function independently of browser-level :hover triggers.
